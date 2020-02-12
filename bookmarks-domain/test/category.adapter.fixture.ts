@@ -8,7 +8,7 @@ export class CategoryAdapter implements ICategoryPort {
     createCategory(category: Category): Promise<Category> {
         throw new Error('Method not implemented.');
     }
-    updateCategory(categoryId: string, title: string, description: string): Promise<Category> {
+    updateCategory(categoryId: string, category: Partial<Category>): Promise<Category> {
         throw new Error('Method not implemented.');
     }
     deleteCategory(categoryId: string): Promise<void> {

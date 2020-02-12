@@ -23,7 +23,7 @@ export interface ICategoryPort {
      * @param title The updated title of the category
      * @param description The updated description of the category
      */
-    updateCategory(categoryId: string, title: string, description: string): Promise<Category>;
+    updateCategory(categoryId: string, category: Partial<Category>): Promise<Category>;
     /**
      * Deletes a category based on its id
      * @param categoryId Category id to be deleted

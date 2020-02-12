@@ -38,8 +38,13 @@ export class CategoryUseCase {
      * @param description Description to be updated
      */
     async updateCategory(categoryId: string, title: string, description: string): Promise<Category>  {
-        this.validateCategory(categoryId, ThrowOn.NOT_FOUND);
-        const updated  = await this.categoryPort.updateCategory(categoryId, title, description);
+        const category = await this.validateCategory(categoryId, ThrowOn.NOT_FOUND);
+        Object.assign(category, {
+            title,
+            description,
+            updatedAt: new Date(),
+        });
+        const updated  = await this.categoryPort.updateCategory(categoryId, category);
         return updated;
     }
     /**

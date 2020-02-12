@@ -44,6 +44,11 @@ describe('Bookmars usecase', () => {
     it('Should create bookmark', async () => {
        jest.spyOn(categoryPort, 'findCategory')
        .mockImplementationOnce(async (id: string) => mockCategory);
+       jest.spyOn(bookmarkPort, 'createBookMark')
+       .mockImplementationOnce(async (bm: Partial<BookMark>) => {
+           Object.assign(bookmark, bm);
+           return bookmark;
+        });
        const created = await usecase.createBookMark('id', document);
        expect(created).toHaveProperty('bookmarkId', md5(title));
        expect(created).toHaveProperty('title', title);
