@@ -1,0 +1,9 @@
+{
+  "source": "./src",
+  "destination": "./docs",
+  "excludes": ["index.ts","\\.spec.ts$","coverage", "node_modules"],
+  "plugins": [
+    {"name": "esdoc-standard-plugin"},
+    {"name": "esdoc-typescript-plugin"}
+  ]
+}
