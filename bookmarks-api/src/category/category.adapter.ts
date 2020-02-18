@@ -11,6 +11,9 @@ export class CategoryAdapter implements ICategoryPort {
         @InjectRepository(CategoryEntity)
         private readonly repository: Repository<CategoryEntity>,
     ) {}
+    findAll() {
+        return this.repository.find();
+    }
     findCategory(categoryId: string): Promise<Category> {
         return this.repository.findOne(categoryId);
     }

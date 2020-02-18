@@ -9,4 +9,7 @@ export class CategoryService extends CategoryUseCase {
     ) {
         super(adapter);
     }
+    findAll() {
+        return this.adapter.findAll();
+    }
 }

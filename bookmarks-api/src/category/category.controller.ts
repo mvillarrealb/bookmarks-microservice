@@ -1,5 +1,6 @@
 import { Controller, Get, Post, Put } from '@nestjs/common';
 import { CategoryService } from './category.service';
+import { ThrowOn } from 'bookmarks-domain/src/domain/throw.enum';
 
 @Controller('category')
 export class CategoryController {
@@ -7,11 +8,17 @@ export class CategoryController {
         private readonly service: CategoryService,
     ){}
     @Get()
-    findAll() {}
+    findAll() {
+        return this.service.findAll();
+    }
     @Get()
-    findOne(categoryId: string) {}
+    findOne(categoryId: string) {
+        return this.service.validateCategory(categoryId, ThrowOn.NOT_FOUND);
+    }
     @Post()
-    create() {}
+    create() {
+       return this.service.createCategory();
+    }
     @Put()
     update() {}
 }
