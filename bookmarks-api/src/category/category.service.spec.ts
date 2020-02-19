@@ -7,7 +7,13 @@ import {repositoryMockFactory } from '../../test/test.util';
 
 describe('CategoryService', () => {
   let service: CategoryService;
-  let repositoryMock;
+  let adapter: CategoryAdapter;
+  const cat = new CategoryEntity({
+    categoryId: 'categoryId',
+    title: 'Database',
+    description: 'Database related topics',
+    createdAt: new Date(),
+  });
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
@@ -18,10 +24,15 @@ describe('CategoryService', () => {
     }).compile();
 
     service = module.get<CategoryService>(CategoryService);
-    repositoryMock = module.get(getRepositoryToken(CategoryEntity));
+    adapter = module.get<CategoryAdapter>(CategoryAdapter);
   });
 
   it('should be defined', () => {
     expect(service).toBeDefined();
+  });
+  it('Should find categories', async () => {
+    jest.spyOn(adapter, 'findAll').mockImplementationOnce(async () => [cat, cat]);
+    const list = await service.findAll();
+    expect(list).toHaveLength(2);
   });
 });

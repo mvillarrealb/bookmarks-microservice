@@ -28,7 +28,6 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.0",
     "rxjs": "^6.5.3",
-    "sqlite3": "^4.1.1",
     "typeorm": "^0.2.22"
   },
   "devDependencies": {
@@ -41,6 +40,7 @@
     "@types/supertest": "^2.0.8",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
+    "sqlite3": "^4.1.1",
     "supertest": "^4.0.2",
     "ts-jest": "^24.1.0",
     "ts-loader": "^6.1.1",
